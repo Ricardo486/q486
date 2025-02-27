@@ -29,7 +29,7 @@ elif opt.gpu_id == '1':
 import pickle
 from modules.module import DCTFeatureExtractor
 
-with open('../freq_mean_std.pkl', 'rb') as f:
+with open('./freq_mean_std.pkl', 'rb') as f:
     freq_stats = pickle.load(f)
     freq_mean = torch.tensor(freq_stats['mean'])
     freq_std = torch.tensor(freq_stats['std'])
@@ -39,7 +39,7 @@ model = Net(dct_module)
 
 modelname = 'MHNet'
 
-model.load_state_dict(torch.load('./' + modelname + '/weight.pth'))
+model.load_state_dict(torch.load('./weight.pth'))
 model.cuda()
 model.eval()
 
@@ -63,7 +63,7 @@ for dataset in test_datasets:
         res = res.sigmoid().data.cpu().numpy().squeeze()
         res = (res - res.min()) / (res.max() - res.min() + 1e-8)
         cv2.imwrite(save_path + name, res * 255)
-    print('Test Done!')
+    print(dataset + '..Test Done!')
 
 for _data_name in ['CAMO', 'CHAMELEON', 'COD10K', 'NC4K']:
     mask_root = './COD_datasets/TestDataset/{}/GT'.format(_data_name)
