@@ -1,2 +1,2 @@
 # q486
-The code of MHNet will be available as soon as possible.
+You can start training the model by typing python train.py in the terminal, or you can directly use our trained weights and type python test.py in the terminal to get the test results.
