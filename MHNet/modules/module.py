@@ -5,7 +5,7 @@ import scipy.fft
 
 
 class MSCA(nn.Module):
-    def __init__(self, in_planes, ratio=16):  # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    def __init__(self, in_planes, ratio=16):
         super(MSCA, self).__init__()
         # HPC
         self.avg_pool_3 = nn.AvgPool2d(kernel_size=3, stride=1, padding=1)
